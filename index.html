@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: #e0e0e0;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        padding: 30px 20px 20px;
+        animation: fadeInDown 0.8s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .header-left {
+        flex: 1;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+        color: #a0a0a0;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .contact-links a {
+        color: #e0e0e0;
+        text-decoration: none;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        font-size: 0.9em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .contact-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        border-color: #666;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 25px;
+        margin-top: 20px;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid #444;
+        padding-bottom: 10px;
+      }
+
+      .roadmap {
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .roadmap::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        background: linear-gradient(to bottom, #666, rgba(102, 102, 102, 0.3));
+      }
+
+      .roadmap-item {
+        position: relative;
+        margin-bottom: 20px;
+        animation: slideInLeft 0.6s ease;
+      }
+
+      .roadmap-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .roadmap-item::before {
+        content: "";
+        position: absolute;
+        left: -21px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        background: #888;
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px #2d2d2d, 0 0 0 5px rgba(136, 136, 136, 0.3);
+        z-index: 1;
+      }
+
+      .roadmap-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 12px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .roadmap-card:hover {
+        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: #666;
+      }
+
+      .period {
+        font-size: 0.75em;
+        color: #888;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .role {
+        font-size: 1em;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      .description {
+        color: #b0b0b0;
+        line-height: 1.4;
+        font-size: 0.85em;
+      }
+
+      .skills-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .skills-list li {
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border-left: 3px solid #666;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .skills-list li:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-left-color: #888;
+        transform: translateX(5px);
+      }
+
+      .info-section {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .info-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .info-item {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 3px solid #666;
+      }
+
+      .info-item h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .info-item p {
+        color: #b0b0b0;
+        line-height: 1.6;
+        margin-bottom: 8px;
+      }
+
+      .info-item ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+      }
+
+      .info-item ul li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+        color: #b0b0b0;
+      }
+
+      .info-item ul li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #888;
+        font-weight: bold;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        .section,
+        .info-section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-left">
+          <h1>Ivan Kolesnicenko</h1>
+          <div class="subtitle">
+            Full Stack Developer<br />Backend Developer
+          </div>
+        </div>
+        <div class="contact-links">
+          <a href="#" id="email" class="email"> kapolizei194@gmail.com </a>
+
+          <style>
+            .email {
+              color: #374151;
+              cursor: pointer;
+              text-decoration: none;
+              transition: color 0.3s ease;
+            }
+
+            .email.copied {
+              color: #3b82f6;
+            }
+          </style>
+
+          <script>
+            const email = document.getElementById("email");
+
+            email.addEventListener("click", async (e) => {
+              e.preventDefault();
+
+              await navigator.clipboard.writeText(email.textContent.trim());
+
+              email.classList.add("copied");
+
+              setTimeout(() => {
+                email.classList.remove("copied");
+              }, 1000);
+            });
+          </script>
+          <a href="https://github.com/kapolizei/">GitHub</a>
+          <a href="https://www.linkedin.com/in/kapolizei/">LinkedIn</a>
+          <a href="https://t.me/kapolizei">Telegram</a>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="sidebar">
+          <div class="section">
+            <h2>Career Path</h2>
+            <div class="roadmap">
+              <!-- <div class="roadmap-item">
+                <div class="roadmap-card">
+                  <div class="period">Current</div>
+                  <div class="role">QA Engineering</div>
+                  <div class="description">
+                    Taking courses in testing and automation
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="roadmap-item">
+                <div class="roadmap-card">
+                  <div class="period">3 month</div>
+                  <div class="role">Backend Developer</div>
+                  <div class="description">
+                    Laravel 10, MySQL, Docker, JS, jQuery.
+                  </div>
+                </div>
+              </div>
+
+              <div class="roadmap-item">
+                <div class="roadmap-card">
+                  <div class="period">8 months</div>
+                  <div class="role">Full Stack Developer</div>
+                  <div class="description">Symfony + React development</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+              <li>PHP / Symfony / Laravel</li>
+              <li>JavaScript / React</li>
+              <li>Redux</li>
+              <li>Redis</li>
+              <li>RabbitMQ</li>
+              <li>Mercure</li>
+              <li>Postman / Insomnia</li>
+              <li>MySQL / SQL</li>
+              <li>Git / GitHub</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="main-section">
+          <div class="info-section">
+            <h2>About Me</h2>
+            <div class="info-grid">
+              <div class="info-item">
+                <h3>Work Experience</h3>
+                <p>
+                  <strong>Full Stack Developer</strong> • Commercial project (~8
+                  months)
+                </p>
+                <ul>
+                  <li>
+                    Developed a business web application using React and Symfony
+                    5.4 (PHP 7.4)
+                  </li>
+                  <li>Designed and implemented RESTful APIs</li>
+                  <li>
+                    Worked with MySQL, optimized database queries and improved
+                    performance
+                  </li>
+                  <li>Implemented caching mechanisms using Redis</li>
+                  <li>
+                    Built JWT-based authentication and API-level data validation
+                  </li>
+                  <li>
+                    Configured Docker containers for development and deployment
+                  </li>
+                  <li>Integrated message queues using RabbitMQ</li>
+                  <li>
+                    Focused on backend performance optimization and security
+                  </li>
+                </ul>
+              </div>
+
+              <div class="info-item">
+                <p>
+                  <strong>Backend Developer</strong> • Commercial project (~3
+                  months)
+                </p>
+                <ul>
+                  <li>
+                    Developed and maintained an internal CRM system for
+                    affiliate and performance marketing
+                  </li>
+                  <li>
+                    Worked with Laravel 10 to implement business
+                    logic and backend features
+                  </li>
+                  <li>
+                    Built and optimized MySQL database structures and queries
+                  </li>
+                  <li>
+                    Configured and maintained Docker-based development
+                    environment
+                  </li>
+                  <li>Handled application deployment and environment setup</li>
+                  <li>Managed domain configuration and migration</li>
+                  <li>
+                    Provided ongoing support and improvements for existing
+                    system features
+                  </li>
+                </ul>
+              </div>
+
+              <div class="info-item">
+                <h3>Education</h3>
+                <p><strong>Computer Science</strong></p>
+                <ul>
+                  <li>at Borys Grinchenko Kyiv Metropolitan University</li>
+                </ul>
+              </div>
+
+              <!-- <div class="info-item">
+                <h3>Projects</h3>
+                <ul>
+                  <li>Project 1 - brief description and tech stack</li>
+                  <li>Project 2 - brief description and tech stack</li>
+                  <li>Project 3 - brief description and tech stack</li>
+                </ul>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelectorAll(".roadmap-card, .skills-list li")
+        .forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            if (this.classList.contains("roadmap-card")) {
+              this.style.transform = "translateX(8px)";
+            } else {
+              this.style.transform = "translateX(5px)";
+            }
+          });
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "";
+          });
+        });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document
+        .querySelectorAll(".roadmap-item, .skills-list li, .info-item")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>
